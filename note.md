@@ -162,6 +162,6 @@ product下的四个二级路由 /Sku /Spu /Attr /TradeMark
 #### spu列表展示
 + 静态
 + 动态展示
-  -
+  - 的
 #### 添加spu&&修改spu
 #### 添加sku 
