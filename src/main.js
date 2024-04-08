@@ -1,3 +1,11 @@
+/*
+ * @Author: wzqf99 1073626828@qq.com
+ * @Date: 2024-03-18 17:19:12
+ * @LastEditors: wzqf99 1073626828@qq.com
+ * @LastEditTime: 2024-03-25 16:49:00
+ * @FilePath: \Project_BackEnd\vue-admin-template\src\main.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import Vue from 'vue'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
@@ -34,10 +42,22 @@ Vue.use(ElementUI, { locale })
 // Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+import API from '@/api'
 
+// 引入全局组件CategorySelect
+import CategorySelect from '@/components/CategorySelect'
+
+import HintButton from '@/components/HintButton'
+
+Vue.prototype.$API = API
+
+Vue.component(CategorySelect.name, CategorySelect)
+
+Vue.component(HintButton.name, HintButton)
 new Vue({
   el: '#app',
   router,
   store,
   render: h => h(App)
 })
+

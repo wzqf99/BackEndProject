@@ -31,12 +31,24 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: port,
-    open: true,
+    open: 'chrome',
     overlay: {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/dev-api': {
+        target: 'http://gmall-h5-api.atguigu.cn',
+        pathRewrite: { '^/dev-api': '' },
+        changeOrigin: true
+        /* http://gmall-h5-api.atguigu.cn */
+      },
+      '/brand-api': {
+        target: 'http://39.98.123.211:8510', // 第二个端口
+        pathRewrite: { '^/brand-api': '' },
+        changeOrigin: true
+      }
+    },
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -87,7 +99,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()

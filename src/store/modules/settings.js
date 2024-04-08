@@ -9,6 +9,7 @@ const state = {
 }
 
 const mutations = {
+  //                       {key,value} = data // key = data.key   value =data,value
   CHANGE_SETTING: (state, { key, value }) => {
     // eslint-disable-next-line no-prototype-builtins
     if (state.hasOwnProperty(key)) {
@@ -18,6 +19,7 @@ const mutations = {
 }
 
 const actions = {
+  //            {commit} = state.commit
   changeSetting({ commit }, data) {
     commit('CHANGE_SETTING', data)
   }
